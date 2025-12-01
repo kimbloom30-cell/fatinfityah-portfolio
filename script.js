@@ -1,0 +1,132 @@
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- Feature 1: Mobile Navigation Toggle ---
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('toggle');
+    });
+
+    // Close menu when a link is clicked
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
+
+
+    // --- Feature 2: Dynamic Typing Effect for Hero Section ---
+    const textElement = document.querySelector('.typing-text');
+    
+    // UPDATED: This line controls the animated text in the Hero section
+    const textToType = "Web Development | Car Rental Systems | AR Unity Specialist";
+    
+    let charIndex = 0;
+    
+    function typeWriter() {
+        if (charIndex < textToType.length) {
+            textElement.textContent += textToType.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeWriter, 100); // Speed of typing (ms)
+        }
+    }
+    
+    // Start typing after a short delay
+    setTimeout(typeWriter, 500);
+
+
+    // --- Feature 3: Dynamic Project Rendering (New) ---
+    // This renders your projects into the "boxes" automatically
+    const projects = [
+        {
+            title: "DriveX Car Rental System",
+            description: "A complete vehicle booking platform allowing users to browse fleet, book dates, and manage payments. Includes an admin dashboard for inventory management.",
+            tech: ["HTML/JS", "MySQL", "PHP"]
+        },
+        {
+            title: "AR Interior Visualizer",
+            description: "An Augmented Reality mobile app built with Unity. It allows users to scan their room and place virtual 3D furniture to visualize fit and style before buying.",
+            tech: ["Unity 3D", "C#", "AR Foundation"]
+        },
+        {
+            title: "Fleet Management DB",
+            description: "Designed a normalized MySQL database architecture for a logistics company, optimizing queries to track vehicle maintenance and availability in real-time.",
+            tech: ["MySQL", "Data Modeling"]
+        }
+    ];
+
+    const projectContainer = document.querySelector('.projects-grid');
+    
+    // Only run if the container exists
+    if (projectContainer) {
+        projectContainer.innerHTML = ''; // Clear any hardcoded HTML
+        
+        projects.forEach(project => {
+            // Generate tags HTML
+            const tagsHtml = project.tech.map(tech => <span class="tech-item">${tech}</span>).join('');
+            
+            // Create the card HTML structure
+            const cardHtml = `
+                <article class="project-card">
+                    <h3>${project.title}</h3>
+                    <p>${project.description}</p>
+                    <div class="tech-stack">
+                        ${tagsHtml}
+                    </div>
+                    <a href="#" class="project-link">View Details &rarr;</a>
+                </article>
+            `;
+            projectContainer.innerHTML += cardHtml;
+        });
+    }
+
+
+    // --- Feature 4: Smooth Scroll with Active Link Highlighting ---
+    window.addEventListener('scroll', () => {
+        let current = '';
+        const sections = document.querySelectorAll('section');
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            // Check if we have scrolled down to this section
+            if (scrollY >= (sectionTop - 200)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navItems.forEach(a => {
+            a.style.color = ''; // Reset color
+            if (a.getAttribute('href').includes(current) && current !== '') {
+                a.style.color = '#d4af37'; // Highlight active link with gold
+            }
+        });
+    });
+
+
+    // --- Feature 5: Form Submission (Front-end only) ---
+    const contactForm = document.getElementById('contactForm');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Stop actual page reload
+            
+            const name = document.getElementById('name').value;
+            const btn = document.querySelector('.submit-btn');
+            const originalText = btn.textContent;
+
+            // Simulate sending state
+            btn.textContent = 'Sending...';
+            btn.style.opacity = '0.7';
+
+            setTimeout(() => {
+                alert(Thank you, ${name}! Your message has been "sent" (This is a demo).);
+                contactForm.reset();
+                btn.textContent = originalText;
+                btn.style.opacity = '1';
+            }, 1500);
+        });
+    }
+});
