@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Feature 2: Dynamic Typing Effect for Hero Section ---
     const textElement = document.querySelector('.typing-text');
     
-    // 💡 UPDATED: Dynamic text for Website Development, MySQL, and AR Unity
+    // Dynamic text
     const textToType = "Develop a Website | MySQL | AR Unity";
     
     let charIndex = 0;
@@ -39,27 +39,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // --- Feature 3: Dynamic Project Rendering ---
-    // 💡 UPDATED: Project data reflecting SQL, Python, Java, C++, and UI/UX/Figma skills
     const projects = [
         {
             title: "Database Performance Audit Tool",
             description: "A Python-based utility for analyzing SQL query performance and suggesting index optimizations across large relational datasets.",
-            tech: ["Python", "SQL", "Query Optimization"]
+            tech: ["Python", "SQL", "Query Optimization"],
+            link: "#" // Placeholder link
         },
         {
-            title: "Real-Time Chat Application",
-            description: "Developed a secure, multi-threaded server application using Java for high-throughput messaging, demonstrating backend language expertise.",
-            tech: ["Java", "Socket Programming", "OOP"]
-        },
-        {
-            title: "High-Performance Data Processor",
+            title: "High-Performance Data Processor (C++)",
             description: "Built a fast, low-level data processing utility using C++ to handle complex financial data structures efficiently.",
-            tech: ["C++", "Data Structures", "Algorithm Design"]
+            tech: ["C++", "Data Structures", "Algorithm Design"],
+            link: "#" // Placeholder link
         },
         {
             title: "Portfolio UX/UI Redesign",
             description: "Conceptualized and designed a new user experience for a client's website, delivering high-fidelity prototypes and design specs.",
-            tech: ["Figma", "UI/UX Design", "Wireframing"]
+            tech: ["Figma", "UI/UX Design", "Wireframing"],
+            // 💡 UPDATED: Added the Figma prototype link here
+            link: "https://www.figma.com/proto/XA1tRlvTVWtAy9kTYeB5Zo/ui-ux?node-id=0-1&t=rqrfhIW8XCs0rvbD-1"
         }
     ];
 
@@ -71,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         projects.forEach(project => {
             const tagsHtml = project.tech.map(tech => `<span class="tech-item">${tech}</span>`).join('');
             
+            // Note the use of project.link for the anchor tag
             const cardHtml = `
                 <article class="project-card">
                     <h3>${project.title}</h3>
@@ -78,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="tech-stack">
                         ${tagsHtml}
                     </div>
-                    <a href="#" class="project-link">View Details &rarr;</a>
+                    <a href="${project.link}" class="project-link" target="_blank">View Project &rarr;</a>
                 </article>
             `;
             projectContainer.innerHTML += cardHtml;
