@@ -44,19 +44,20 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Database Performance Audit Tool",
             description: "A Python-based utility for analyzing SQL query performance and suggesting index optimizations across large relational datasets.",
             tech: ["Python", "SQL", "Query Optimization"],
-            link: "#" // Placeholder link
+            link: "#" 
         },
         {
             title: "Sarawak Metro ART Full Prototype",
-            description: "Mobile Application prototype that features ticket booking and station finders including a accessibility options.",
+            description: "Mobile Application prototype that features ticket booking and station finders including accessibility options.",
             tech: ["UI/UX Design", "Figma"],
-            // 💡 UPDATED: Added the Figma prototype link here
+            // Figma link for Sarawak Metro
             link: "https://www.figma.com/proto/pT548jIWSKEbDBG3X7pLra/hci?page-id=0%3A1&node-id=671-789&p=f&viewport=188%2C1231%2C0.21&t=6Zc40a2ZXocaBvev-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=671%3A789"
+        }, // <-- 💡 FIX: Added missing comma and closing brace
         {
             title: "Portfolio UX/UI Redesign Using Figma",
             description: "Conceptualized and designed a new user experience for a client's website, delivering high-fidelity prototypes and design specs.",
             tech: ["Figma", "UI/UX Design", "Wireframing"],
-            // 💡 UPDATED: Added the Figma prototype link here
+            // Figma link for Portfolio Redesign
             link: "https://www.figma.com/proto/XA1tRlvTVWtAy9kTYeB5Zo/ui-ux?node-id=0-1&t=rqrfhIW8XCs0rvbD-1"
         }
     ];
