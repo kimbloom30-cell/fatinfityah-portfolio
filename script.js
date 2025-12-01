@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     navItems.forEach(item => {
         item.addEventListener('click', () => {
             navLinks.classList.remove('active');
-            hamburger.classList.remove('toggle'); // Close hamburger animation too
+            hamburger.classList.remove('toggle');
         });
     });
 
@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Feature 2: Dynamic Typing Effect for Hero Section ---
     const textElement = document.querySelector('.typing-text');
     
-    // 💡 UPDATED: Dynamic text for Database Developer role
-    const textToType = "SQL Expert | Data Architect | Query Optimizer";
+    // 💡 UPDATED: Dynamic text for new focus areas
+    const textToType = "Website developer | MYSQL | AR Unity";
     
     let charIndex = 0;
     
@@ -31,45 +31,41 @@ document.addEventListener('DOMContentLoaded', () => {
         if (charIndex < textToType.length) {
             textElement.textContent += textToType.charAt(charIndex);
             charIndex++;
-            setTimeout(typeWriter, 100); // Speed of typing (ms)
+            setTimeout(typeWriter, 100); 
         }
     }
     
-    // Start typing after a short delay
     setTimeout(typeWriter, 500);
 
 
     // --- Feature 3: Dynamic Project Rendering ---
-    // 💡 UPDATED: Project data aligned with Database Developer role
+    // 💡 UPDATED: Project data reflecting new skills (Web Dev, Unity/AR, MySQL)
     const projects = [
         {
-            title: "E-Commerce Warehouse DB",
-            description: "Designed a normalized relational database schema for a high-volume inventory management system to reduce data redundancy.",
-            tech: ["MySQL", "ERD Design", "Normalization"]
+            title: "DriveX Car Rental System",
+            description: "A complete vehicle booking platform allowing users to browse fleet, book dates, and manage payments. Built with a robust web stack.",
+            tech: ["HTML/JS", "MySQL", "PHP"]
         },
         {
-            title: "Healthcare Analytics Pipeline",
-            description: "Built an ETL pipeline to aggregate patient records from multiple sources into a secure data warehouse for reporting.",
-            tech: ["Python", "PostgreSQL", "ETL"]
+            title: "AR Interior Visualizer",
+            description: "An Augmented Reality mobile app built with Unity. It allows users to place virtual 3D furniture to visualize fit and style before buying.",
+            tech: ["Unity 3D", "C#", "AR Foundation"]
         },
         {
-            title: "Real-Time Log Analyzer",
-            description: "A NoSQL solution for ingesting and querying server logs in real-time to detect security anomalies.",
-            tech: ["MongoDB", "Node.js", "NoSQL"]
+            title: "Portfolio Website Build",
+            description: "A modern, responsive portfolio website built from scratch using clean HTML, CSS variables, and dynamic JavaScript.",
+            tech: ["HTML5", "CSS3", "JavaScript"]
         }
     ];
 
     const projectContainer = document.querySelector('.projects-grid');
     
-    // Only run if the container exists
     if (projectContainer) {
-        projectContainer.innerHTML = ''; // Clear any hardcoded HTML
+        projectContainer.innerHTML = ''; 
         
         projects.forEach(project => {
-            // Generate tags HTML
             const tagsHtml = project.tech.map(tech => `<span class="tech-item">${tech}</span>`).join('');
             
-            // Create the card HTML structure
             const cardHtml = `
                 <article class="project-card">
                     <h3>${project.title}</h3>
@@ -85,13 +81,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- Feature 4: Smooth Scroll with Active Link Highlighting (Intersection Observer) ---
+    // --- Feature 4: Active Link Highlighting (Intersection Observer) ---
     const sections = document.querySelectorAll('section');
 
     const observerOptions = {
-        root: null, // relative to the viewport
+        root: null, 
         rootMargin: "0px",
-        threshold: 0.5 // trigger when 50% of the section is visible
+        threshold: 0.5 
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -100,9 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const activeLink = document.querySelector(`.nav-links a[href="#${id}"]`);
 
             if (entry.isIntersecting) {
-                // Remove active class from all first
                 navItems.forEach(a => a.classList.remove('link-active')); 
-                // Add active class to the current one
                 if (activeLink) {
                     activeLink.classList.add('link-active');
                 }
@@ -110,7 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Start observing all sections
     sections.forEach(section => {
         observer.observe(section);
     });
@@ -121,13 +114,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault(); // Stop actual page reload
+            e.preventDefault(); 
             
             const name = document.getElementById('name').value;
             const btn = document.querySelector('.submit-btn');
             const originalText = btn.textContent;
 
-            // Simulate sending state
             btn.textContent = 'Sending...';
             btn.style.opacity = '0.7';
 
