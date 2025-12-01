@@ -75,6 +75,11 @@ ul {
     color: var(--gold-primary);
 }
 
+/* 💡 NEW/UPDATED: Style for the active link (controlled by JS) */
+.nav-links a.link-active {
+    color: var(--gold-primary); 
+}
+
 .nav-links a::after {
     content: '';
     position: absolute;
@@ -86,9 +91,11 @@ ul {
     transition: var(--transition);
 }
 
-.nav-links a:hover::after {
+.nav-links a:hover::after,
+.nav-links a.link-active::after { /* 💡 UPDATED: Ensure underline is active too */
     width: 100%;
 }
+
 
 /* Mobile Menu Button */
 .hamburger {
@@ -105,6 +112,20 @@ ul {
     transition: var(--transition);
 }
 
+/* 💡 NEW: Hamburger close animation */
+.hamburger.toggle .bar:nth-child(2) {
+    opacity: 0; /* Hide the middle bar */
+}
+
+.hamburger.toggle .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.toggle .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+
 /* --- HERO SECTION --- */
 .hero {
     height: 100vh;
@@ -120,11 +141,19 @@ ul {
 
 .hero h1 {
     font-size: 3.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem; /* Adjusted for static title */
 }
 
 .hero h1 span {
     color: var(--gold-primary);
+}
+
+/* 💡 NEW: Style for the static title (Database Developer) */
+.static-title {
+    font-size: 1.8rem;
+    color: var(--text-main);
+    font-weight: 300;
+    margin-bottom: 0.8rem; /* Space between static and dynamic text */
 }
 
 .typing-text {
@@ -267,6 +296,7 @@ section {
 
 .tech-stack {
     display: flex;
+    flex-wrap: wrap; /* Allows tags to wrap on smaller screens */
     gap: 10px;
     margin-bottom: 20px;
     font-size: 0.85rem;
@@ -373,6 +403,15 @@ footer {
         justify-content: center;
         transform: translateX(100%);
         transition: transform 0.3s ease-in-out;
+        gap: 0; /* Reset gap for full vertical control */
+    }
+    
+    .nav-links li { /* 💡 NEW: Added vertical spacing for links on mobile */
+        margin: 15px 0; 
+    }
+
+    .nav-links a {
+        font-size: 1.5rem; /* Make links larger for mobile */
     }
 
     .nav-links.active {
@@ -381,5 +420,9 @@ footer {
 
     .hero h1 {
         font-size: 2.5rem;
+    }
+    
+    .static-title {
+        font-size: 1.4rem;
     }
 }
