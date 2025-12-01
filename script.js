@@ -39,22 +39,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // --- Feature 3: Dynamic Project Rendering ---
-    // 💡 UPDATED: Project data reflecting Web Dev, Unity/AR, and MySQL skills
+    // 💡 UPDATED: Project data reflecting SQL, Python, Java, C++, and UI/UX/Figma skills
     const projects = [
         {
-            title: "DriveX Car Rental System",
-            description: "A complete vehicle booking platform allowing users to browse fleet, book dates, and manage payments. Built with a robust web stack and MySQL backend.",
-            tech: ["HTML/JS", "MySQL", "PHP"]
+            title: "Database Performance Audit Tool",
+            description: "A Python-based utility for analyzing SQL query performance and suggesting index optimizations across large relational datasets.",
+            tech: ["Python", "SQL", "Query Optimization"]
         },
         {
-            title: "AR Interior Visualizer",
-            description: "An Augmented Reality mobile app built with Unity. It allows users to place virtual 3D furniture to visualize fit and style before buying.",
-            tech: ["Unity 3D", "C#", "AR Foundation"]
+            title: "Real-Time Chat Application",
+            description: "Developed a secure, multi-threaded server application using Java for high-throughput messaging, demonstrating backend language expertise.",
+            tech: ["Java", "Socket Programming", "OOP"]
         },
         {
-            title: "Portfolio Website Build",
-            description: "A modern, responsive portfolio website built from scratch using clean HTML, CSS variables, and dynamic JavaScript.",
-            tech: ["HTML5", "CSS3", "JavaScript"]
+            title: "High-Performance Data Processor",
+            description: "Built a fast, low-level data processing utility using C++ to handle complex financial data structures efficiently.",
+            tech: ["C++", "Data Structures", "Algorithm Design"]
+        },
+        {
+            title: "Portfolio UX/UI Redesign",
+            description: "Conceptualized and designed a new user experience for a client's website, delivering high-fidelity prototypes and design specs.",
+            tech: ["Figma", "UI/UX Design", "Wireframing"]
         }
     ];
 
