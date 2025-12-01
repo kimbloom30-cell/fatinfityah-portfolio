@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             tech: ["SQL", "PHP", "Python"],
             link: "#", 
             // ⬅️ UPDATED: Use your three image filenames here
-            images: ["zoomcar-1.jpg", "zoomcar-2.jpg", "zoomcar-3.jpg"] 
+            images: ["zoomcar-1.png", "zoomcar-2.png", "zoomcar-3.png"] 
         },
         {
             title: "Sarawak Metro ART Full Prototype",
