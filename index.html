@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fatin Fityah | Database Developer</title>
+    <meta name="description" content="Portfolio of Fatin Fityah, a Database Developer specializing in SQL, optimization, and data architecture.">
+    
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">FATIN.DEV</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+
+    <!-- Home / Hero Section -->
+    <section id="home" class="hero">
+        <h1>Hi, I'm <span>Fatin Fityah</span></h1>
+        <!-- The text below will be typed dynamically by JavaScript -->
+        <p class="typing-text"></p> 
+        <a href="#projects" class="cta-btn">View My Work</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title"><span>About Me</span></h2>
+        <div class="about-container">
+            <div class="about-text">
+                <p>
+                    I am a dedicated <strong>Database Developer</strong> with a passion for designing efficient data architectures. 
+                    I specialize in transforming complex data requirements into streamlined, high-performance database solutions.
+                    My focus is on security, scalability, and data integrity.
+                </p>
+                <p>
+                    When I'm not optimizing queries, I'm exploring the latest trends in Big Data and cloud storage solutions.
+                </p>
+            </div>
+            <div class="skills-container">
+                <h3>Tech Stack</h3>
+                <div class="skills-grid">
+                    <div class="skill-tag">SQL</div>
+                    <div class="skill-tag">PostgreSQL</div>
+                    <div class="skill-tag">MongoDB</div>
+                    <div class="skill-tag">Python</div>
+                    <div class="skill-tag">Data Modeling</div>
+                    <div class="skill-tag">ETL Pipelines</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title"><span>Projects</span></h2>
+        <div class="projects-grid">
+            
+            <!-- Project 1 -->
+            <article class="project-card">
+                <h3>E-Commerce Warehouse DB</h3>
+                <p>Designed a normalized relational database schema for a high-volume inventory management system to reduce data redundancy.</p>
+                <div class="tech-stack">
+                    <span class="tech-item">MySQL</span>
+                    <span class="tech-item">ERD Design</span>
+                </div>
+                <a href="#" class="project-link">View Details &rarr;</a>
+            </article>
+
+            <!-- Project 2 -->
+            <article class="project-card">
+                <h3>Healthcare Analytics Pipeline</h3>
+                <p>Built an ETL pipeline to aggregate patient records from multiple sources into a secure data warehouse for reporting.</p>
+                <div class="tech-stack">
+                    <span class="tech-item">Python</span>
+                    <span class="tech-item">PostgreSQL</span>
+                </div>
+                <a href="#" class="project-link">View Details &rarr;</a>
+            </article>
+
+            <!-- Project 3 -->
+            <article class="project-card">
+                <h3>Real-Time Log Analyzer</h3>
+                <p>A NoSQL solution for ingesting and querying server logs in real-time to detect security anomalies.</p>
+                <div class="tech-stack">
+                    <span class="tech-item">MongoDB</span>
+                    <span class="tech-item">Node.js</span>
+                </div>
+                <a href="#" class="project-link">View Details &rarr;</a>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title"><span>Contact Me</span></h2>
+        <div class="contact-container">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required placeholder="your.email@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="5" required placeholder="How can I help you?"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Fatin Fityah. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Link to the external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
