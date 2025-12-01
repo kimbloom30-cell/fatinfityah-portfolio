@@ -135,8 +135,13 @@ ul {
     align-items: center;
     text-align: center;
     padding: 0 20px;
-    background: radial-gradient(circle at center, #1a1a1a 0%, #0f0f0f 70%);
-    margin-top: 0;
+    
+    /* 💡 UPDATED: Galaxy Background with Black & Gold Theme */
+    background: 
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), /* Dark overlay for text readability */
+        url('galaxy.jpg') no-repeat center center fixed; /* Your galaxy image here */
+    background-size: cover; /* Ensures the image covers the entire section */
+    position: relative; /* Needed for pseudo-elements or absolute positioning inside */
 }
 
 .hero h1 {
@@ -436,7 +441,7 @@ footer {
     }
     
     .profile-area {
-        order: -1; /* Place the picture above the text on mobile */
+        order: -1; 
         flex-basis: 100%;
         margin-bottom: 30px;
     }
