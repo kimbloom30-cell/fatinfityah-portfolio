@@ -136,7 +136,7 @@ ul {
     /* GALAXY BACKGROUND */
     background: 
         linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-        url('galaxy-background.jpg') no-repeat center center fixed; /* YOUR GALAXY IMAGE PATH */
+        url('galaxy.jpg') no-repeat center center fixed; /* YOUR GALAXY IMAGE PATH */
     background-size: cover; 
     position: relative;
 }
