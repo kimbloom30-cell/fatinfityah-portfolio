@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Feature 2: Dynamic Typing Effect for Hero Section ---
     const textElement = document.querySelector('.typing-text');
     
-    // 💡 CHANGED: Dynamic text for Database Developer role
-    const textToType = "SQL Expert | Data Architect | Query Optimizer";
+    // 💡 UPDATED: Dynamic text for Website Development, MySQL, and AR Unity
+    const textToType = "Develop a Website | MySQL | AR Unity";
     
     let charIndex = 0;
     
@@ -39,22 +39,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // --- Feature 3: Dynamic Project Rendering ---
-    // 💡 CHANGED: Project data reverted to Database Developer focus
+    // 💡 UPDATED: Project data reflecting Web Dev, Unity/AR, and MySQL skills
     const projects = [
         {
-            title: "E-Commerce Warehouse DB",
-            description: "Designed a normalized relational database schema for a high-volume inventory management system to reduce data redundancy.",
-            tech: ["MySQL", "ERD Design", "Normalization"]
+            title: "DriveX Car Rental System",
+            description: "A complete vehicle booking platform allowing users to browse fleet, book dates, and manage payments. Built with a robust web stack and MySQL backend.",
+            tech: ["HTML/JS", "MySQL", "PHP"]
         },
         {
-            title: "Healthcare Analytics Pipeline",
-            description: "Built an ETL pipeline to aggregate patient records from multiple sources into a secure data warehouse for reporting.",
-            tech: ["Python", "PostgreSQL", "ETL"]
+            title: "AR Interior Visualizer",
+            description: "An Augmented Reality mobile app built with Unity. It allows users to place virtual 3D furniture to visualize fit and style before buying.",
+            tech: ["Unity 3D", "C#", "AR Foundation"]
         },
         {
-            title: "Real-Time Log Analyzer",
-            description: "A NoSQL solution for ingesting and querying server logs in real-time to detect security anomalies.",
-            tech: ["MongoDB", "Node.js", "NoSQL"]
+            title: "Portfolio Website Build",
+            description: "A modern, responsive portfolio website built from scratch using clean HTML, CSS variables, and dynamic JavaScript.",
+            tech: ["HTML5", "CSS3", "JavaScript"]
         }
     ];
 
@@ -82,7 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // --- Feature 4: Active Link Highlighting (Intersection Observer) ---
-    // Using Intersection Observer for smooth and performant highlighting
     const sections = document.querySelectorAll('section');
 
     const observerOptions = {
