@@ -363,6 +363,24 @@ section {
     border: 1px solid #333;
 }
 
+/* Style for the new email link in the contact section */
+.contact-email {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    color: var(--text-muted);
+}
+
+.contact-email a {
+    color: var(--gold-primary);
+    transition: var(--transition);
+}
+
+.contact-email a:hover {
+    color: var(--gold-hover);
+    text-decoration: underline;
+}
+
 .form-group {
     margin-bottom: 20px;
 }
