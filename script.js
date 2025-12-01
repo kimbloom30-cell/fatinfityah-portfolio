@@ -47,13 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
             link: "#" // Placeholder link
         },
         {
-            title: "High-Performance Data Processor (C++)",
-            description: "Built a fast, low-level data processing utility using C++ to handle complex financial data structures efficiently.",
-            tech: ["C++", "Data Structures", "Algorithm Design"],
-            link: "#" // Placeholder link
-        },
+            title: "Sarawak Metro ART Full Prototype",
+            description: "Mobile Application prototype that features ticket booking and station finders including a accessibility options.",
+            tech: ["UI/UX Design", "Figma"],
+            // 💡 UPDATED: Added the Figma prototype link here
+            link: "https://www.figma.com/proto/pT548jIWSKEbDBG3X7pLra/hci?page-id=0%3A1&node-id=671-789&p=f&viewport=188%2C1231%2C0.21&t=6Zc40a2ZXocaBvev-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=671%3A789"
         {
-            title: "Portfolio UX/UI Redesign",
+            title: "Portfolio UX/UI Redesign Using Figma",
             description: "Conceptualized and designed a new user experience for a client's website, delivering high-fidelity prototypes and design specs.",
             tech: ["Figma", "UI/UX Design", "Wireframing"],
             // 💡 UPDATED: Added the Figma prototype link here
