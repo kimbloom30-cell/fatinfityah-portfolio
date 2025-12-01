@@ -41,23 +41,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Feature 3: Dynamic Project Rendering ---
     const projects = [
         {
-            title: "Database Performance Audit Tool",
-            description: "A Python-based utility for analyzing SQL query performance and suggesting index optimizations across large relational datasets.",
-            tech: ["Python", "SQL", "Query Optimization"],
-            link: "#" 
+            // UPDATED: ZOOMRENTALCAR DATABASE Project using an 'images' array
+            title: "ZOOMRENTALCAR DATABASE",
+            description: "The ZoomCarRental database stores information about customers, vehicles, bookings, and payments. It helps the system manage rentals, track available cars, record customer bookings, and display updates on the admin dashboard.",
+            tech: ["SQL", "PHP", "Python"],
+            link: "#", 
+            // ⬅️ UPDATED: Use your three image filenames here
+            images: ["zoomcar-1.jpg", "zoomcar-2.jpg", "zoomcar-3.jpg"] 
         },
         {
             title: "Sarawak Metro ART Full Prototype",
             description: "Mobile Application prototype that features ticket booking and station finders including accessibility options.",
             tech: ["UI/UX Design", "Figma"],
-            // Figma link for Sarawak Metro
             link: "https://www.figma.com/proto/pT548jIWSKEbDBG3X7pLra/hci?page-id=0%3A1&node-id=671-789&p=f&viewport=188%2C1231%2C0.21&t=6Zc40a2ZXocaBvev-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=671%3A789"
-        }, // <-- 💡 FIX: Added missing comma and closing brace
+        }, 
         {
             title: "Portfolio UX/UI Redesign Using Figma",
             description: "Conceptualized and designed a new user experience for a client's website, delivering high-fidelity prototypes and design specs.",
             tech: ["Figma", "UI/UX Design", "Wireframing"],
-            // Figma link for Portfolio Redesign
             link: "https://www.figma.com/proto/XA1tRlvTVWtAy9kTYeB5Zo/ui-ux?node-id=0-1&t=rqrfhIW8XCs0rvbD-1"
         }
     ];
@@ -70,9 +71,28 @@ document.addEventListener('DOMContentLoaded', () => {
         projects.forEach(project => {
             const tagsHtml = project.tech.map(tech => `<span class="tech-item">${tech}</span>`).join('');
             
-            // Note the use of project.link for the anchor tag
+            // ⬅️ UPDATED: Logic to handle multiple images
+            let imageHtml = '';
+            if (project.images && project.images.length > 0) {
+                // Generate HTML for each image
+                const imageTags = project.images.map((imgSrc, index) => `
+                    <img src="${imgSrc}" alt="${project.title} screenshot ${index + 1}" class="project-img">
+                `).join('');
+                
+                // Wrap all images in a container and add the 'multiple-images' class for styling
+                imageHtml = `<div class="project-image-container multiple-images">
+                    ${imageTags}
+                </div>`;
+            } else if (project.image) {
+                 // Fallback/standard logic for a single 'image' property if it exists
+                 imageHtml = `<div class="project-image-container">
+                    <img src="${project.image}" alt="Image for ${project.title}" class="project-img">
+                </div>`;
+            }
+
             const cardHtml = `
                 <article class="project-card">
+                    ${imageHtml}
                     <h3>${project.title}</h3>
                     <p>${project.description}</p>
                     <div class="tech-stack">
