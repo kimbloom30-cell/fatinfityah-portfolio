@@ -1,5 +1,47 @@
 document.addEventListener('DOMContentLoaded', () => {
     
+    // --- MODAL LOGIC (New Feature) ---
+    const modal = document.getElementById('projectModal');
+    const closeBtn = document.querySelector('.close-btn');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalImageGallery = document.getElementById('modalImageGallery');
+    const modalDescription = document.getElementById('modalDescription');
+
+    // Function to open, populate, and display the modal
+    function openProjectModal(projectTitle, imagesArray, description) {
+        modalTitle.textContent = projectTitle;
+        modalDescription.textContent = description;
+        
+        // Populate the image gallery
+        modalImageGallery.innerHTML = '';
+        imagesArray.forEach((imgSrc, index) => {
+            const img = document.createElement('img');
+            img.src = imgSrc;
+            img.alt = `${projectTitle} Screenshot ${index + 1}`;
+            modalImageGallery.appendChild(img);
+        });
+
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore background scrolling
+    }
+
+    // Event listeners to close the modal
+    closeBtn.addEventListener('click', closeModal);
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Make the function globally accessible for the onClick handler in the HTML string
+    window.openProjectModal = openProjectModal; 
+
     // --- Feature 1: Mobile Navigation Toggle ---
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
@@ -21,10 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Feature 2: Dynamic Typing Effect for Hero Section ---
     const textElement = document.querySelector('.typing-text');
-    
-    // Dynamic text
     const textToType = "Develop a Website | MySQL | AR Unity";
-    
     let charIndex = 0;
     
     function typeWriter() {
@@ -41,13 +80,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Feature 3: Dynamic Project Rendering ---
     const projects = [
         {
-            // UPDATED: ZOOMRENTALCAR DATABASE Project using an 'images' array
+            // UPDATED: ZOOMRENTALCAR DATABASE Project triggering the modal
             title: "ZOOMRENTALCAR DATABASE",
             description: "The ZoomCarRental database stores information about customers, vehicles, bookings, and payments. It helps the system manage rentals, track available cars, record customer bookings, and display updates on the admin dashboard.",
             tech: ["SQL", "PHP", "Python"],
-            link: "#", 
-            // ⬅️ UPDATED: Use your three image filenames here
-            images: ["zoomcar-1.png", "zoomcar-2.png", "zoomcar-3.png"] 
+            // Removed 'link' property
+            images: ["zoomcar-1.jpg", "zoomcar-2.jpg", "zoomcar-3.jpg"] 
         },
         {
             title: "Sarawak Metro ART Full Prototype",
@@ -71,24 +109,43 @@ document.addEventListener('DOMContentLoaded', () => {
         projects.forEach(project => {
             const tagsHtml = project.tech.map(tech => `<span class="tech-item">${tech}</span>`).join('');
             
-            // ⬅️ UPDATED: Logic to handle multiple images
             let imageHtml = '';
+            // Logic to handle images for the card preview
             if (project.images && project.images.length > 0) {
-                // Generate HTML for each image
+                // If multiple images exist, show them in the card preview
                 const imageTags = project.images.map((imgSrc, index) => `
                     <img src="${imgSrc}" alt="${project.title} screenshot ${index + 1}" class="project-img">
                 `).join('');
                 
-                // Wrap all images in a container and add the 'multiple-images' class for styling
                 imageHtml = `<div class="project-image-container multiple-images">
                     ${imageTags}
                 </div>`;
             } else if (project.image) {
-                 // Fallback/standard logic for a single 'image' property if it exists
+                 // Fallback for a single image if 'image' property exists
                  imageHtml = `<div class="project-image-container">
                     <img src="${project.image}" alt="Image for ${project.title}" class="project-img">
                 </div>`;
             }
+
+            // Logic to determine the action of the "View Project" link
+            let projectLinkHtml = '';
+            if (project.link) {
+                // For projects with an external link (default behavior)
+                projectLinkHtml = `<a href="${project.link}" class="project-link" target="_blank">View Project &rarr;</a>`;
+            } else if (project.images) {
+                // For projects with images that open the modal
+                const imagesString = JSON.stringify(project.images).replace(/"/g, "'"); 
+                const titleString = JSON.stringify(project.title);
+                const descriptionString = JSON.stringify(project.description);
+                
+                projectLinkHtml = `
+                    <a href="#" class="project-link modal-trigger" 
+                        onclick="event.preventDefault(); openProjectModal(${titleString}, ${imagesString}, ${descriptionString})">
+                        View Project &rarr;
+                    </a>
+                `;
+            }
+            // End of new link logic
 
             const cardHtml = `
                 <article class="project-card">
@@ -98,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="tech-stack">
                         ${tagsHtml}
                     </div>
-                    <a href="${project.link}" class="project-link" target="_blank">View Project &rarr;</a>
+                    ${projectLinkHtml}
                 </article>
             `;
             projectContainer.innerHTML += cardHtml;
