@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Feature 2: Dynamic Typing Effect for Hero Section ---
     const textElement = document.querySelector('.typing-text');
     
-    // 💡 UPDATED: Dynamic text for new focus areas
+    // UPDATED: Dynamic text for new focus areas (Website developer, MYSQL, AR Unity)
     const textToType = "Website developer | MYSQL | AR Unity";
     
     let charIndex = 0;
@@ -39,11 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // --- Feature 3: Dynamic Project Rendering ---
-    // 💡 UPDATED: Project data reflecting new skills (Web Dev, Unity/AR, MySQL)
+    // UPDATED: Project data reflecting new skills (Web Dev, Unity/AR, MySQL)
     const projects = [
         {
             title: "DriveX Car Rental System",
-            description: "A complete vehicle booking platform allowing users to browse fleet, book dates, and manage payments. Built with a robust web stack.",
+            description: "A complete vehicle booking platform allowing users to browse fleet, book dates, and manage payments. Built with a robust web stack and MySQL backend.",
             tech: ["HTML/JS", "MySQL", "PHP"]
         },
         {
@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // --- Feature 4: Active Link Highlighting (Intersection Observer) ---
+    // Using Intersection Observer for smooth and performant highlighting
     const sections = document.querySelectorAll('section');
 
     const observerOptions = {
