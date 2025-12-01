@@ -315,6 +315,48 @@ section {
     box-shadow: 0 10px 20px rgba(0,0,0,0.5);
 }
 
+/* --- PROJECT IMAGE STYLES (SINGLE IMAGE) --- */
+.project-image-container {
+    height: 180px; /* Default height for a single image */
+    overflow: hidden; 
+    border-radius: 6px;
+    margin-bottom: 15px;
+    border: 1px solid #444;
+}
+
+.project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    transition: transform 0.3s ease;
+}
+
+/* Optional: Add a subtle hover effect to the single image */
+.project-card:hover .project-img {
+    transform: scale(1.05);
+}
+
+/* --- NEW STYLES FOR MULTIPLE IMAGES (3 PICTURES) --- */
+/* Adjusts container to use Flexbox for side-by-side layout */
+.project-image-container.multiple-images {
+    display: flex; /* Enables flex container */
+    gap: 5px; /* Small space between images */
+    height: 120px; /* Reduced height to fit multiple images better */
+    padding: 5px; /* Add slight padding inside the container */
+    align-items: center; 
+}
+
+/* Styles individual image elements inside the multiple-images container */
+.project-image-container.multiple-images .project-img {
+    width: 33.33%; /* Each image takes up one-third of the container width */
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px; 
+    /* Disable hover scaling on individual images for multi-image cards */
+    transition: none; 
+}
+
+/* --- PROJECT TEXT & TAGS --- */
 .project-card h3 {
     color: var(--gold-primary);
     margin-bottom: 10px;
