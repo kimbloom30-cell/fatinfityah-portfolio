@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- MODAL LOGIC ---
+    // --- MODAL LOGIC (Accesses the HTML elements by ID/class) ---
     const modal = document.getElementById('projectModal');
     const closeBtn = document.querySelector('.close-btn');
     const modalTitle = document.getElementById('modalTitle');
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modalImageGallery.innerHTML = '';
         imagesArray.forEach((imgSrc, index) => {
             const img = document.createElement('img');
-            img.src = imgSrc;
+            img.src = imgSrc; // This is where the image path is set!
             img.alt = `${projectTitle} Screenshot ${index + 1}`;
             modalImageGallery.appendChild(img);
         });
@@ -80,10 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Feature 3: Dynamic Project Rendering ---
     const projects = [
         {
+            // ZoomRentalCar project: No link property, so it uses the modal. 
+            // File extensions are set to .png.
             title: "ZOOMRENTALCAR DATABASE",
             description: "The ZoomCarRental database stores information about customers, vehicles, bookings, and payments. It helps the system manage rentals, track available cars, record customer bookings, and display updates on the admin dashboard.",
             tech: ["SQL", "PHP", "Python"],
-            // 💡 FIXED: Updated file extensions from .jpg to .png
             images: ["zoomcar-1.png", "zoomcar-2.png", "zoomcar-3.png"] 
         },
         {
