@@ -80,11 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Feature 3: Dynamic Project Rendering ---
     const projects = [
         {
-            // ZOOMRENTALCAR DATABASE Project triggering the modal
+            // This project will intentionally NOT have an imageHtml preview
             title: "ZOOMRENTALCAR DATABASE",
             description: "The ZoomCarRental database stores information about customers, vehicles, bookings, and payments. It helps the system manage rentals, track available cars, record customer bookings, and display updates on the admin dashboard.",
             tech: ["SQL", "PHP", "Python"],
-            // Images array used for both card preview and modal content
             images: ["zoomcar-1.png", "zoomcar-2.png", "zoomcar-3.png"] 
         },
         {
@@ -110,31 +109,35 @@ document.addEventListener('DOMContentLoaded', () => {
             const tagsHtml = project.tech.map(tech => `<span class="tech-item">${tech}</span>`).join('');
             
             let imageHtml = '';
-            // Logic to handle images for the card preview
-            if (project.images && project.images.length > 0) {
-                // Show multiple images in the card preview
-                const imageTags = project.images.map((imgSrc, index) => `
-                    <img src="${imgSrc}" alt="${project.title} screenshot ${index + 1}" class="project-img">
-                `).join('');
-                
-                imageHtml = `<div class="project-image-container multiple-images">
-                    ${imageTags}
-                </div>`;
-            } else if (project.image) {
-                 // Fallback for a single image if 'image' property exists
-                 imageHtml = `<div class="project-image-container">
-                    <img src="${project.image}" alt="Image for ${project.title}" class="project-img">
-                </div>`;
+            
+            // 💡 ONLY create an image preview if the project has an external link or a single 'image' property
+            // This ensures ZOOMRENTALCAR (which has no 'link') gets a clean card.
+            if (project.link) { 
+                if (project.images && project.images.length > 0) {
+                    // For projects with an external link AND an array of images (if you had any)
+                    const imageTags = project.images.map((imgSrc, index) => `
+                        <img src="${imgSrc}" alt="${project.title} screenshot ${index + 1}" class="project-img">
+                    `).join('');
+                    
+                    imageHtml = `<div class="project-image-container multiple-images">
+                        ${imageTags}
+                    </div>`;
+                } else if (project.image) {
+                    // Fallback for a single image if 'image' property exists
+                    imageHtml = `<div class="project-image-container">
+                        <img src="${project.image}" alt="Image for ${project.title}" class="project-img">
+                    </div>`;
+                }
             }
+            // If the project has no link (like ZOOMRENTALCAR), imageHtml remains ''
 
             // Logic to determine the action of the "View Project" link
             let projectLinkHtml = '';
             if (project.link) {
-                // For projects with an external link
+                // Standard external link
                 projectLinkHtml = `<a href="${project.link}" class="project-link" target="_blank">View Project &rarr;</a>`;
-            } else if (project.images) {
-                // For projects with images that open the modal
-                // JSON.stringify is used to safely pass arrays and strings into the onclick function
+            } else if (project.images && !project.link) {
+                // Modal trigger link (only for projects with images array AND no external link)
                 const imagesString = JSON.stringify(project.images).replace(/"/g, "'"); 
                 const titleString = JSON.stringify(project.title);
                 const descriptionString = JSON.stringify(project.description);
