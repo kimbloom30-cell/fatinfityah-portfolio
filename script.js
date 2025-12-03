@@ -1,12 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- MODAL LOGIC (New Feature) ---
+    // --- MODAL LOGIC ---
     const modal = document.getElementById('projectModal');
     const closeBtn = document.querySelector('.close-btn');
     const modalTitle = document.getElementById('modalTitle');
     const modalImageGallery = document.getElementById('modalImageGallery');
     const modalDescription = document.getElementById('modalDescription');
 
+    // Function to close the modal
+    function closeModal() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore background scrolling
+    }
+    
     // Function to open, populate, and display the modal
     function openProjectModal(projectTitle, imagesArray, description) {
         modalTitle.textContent = projectTitle;
@@ -23,12 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         modal.style.display = 'block';
         document.body.style.overflow = 'hidden'; // Prevent background scrolling
-    }
-
-    // Function to close the modal
-    function closeModal() {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Restore background scrolling
     }
 
     // Event listeners to close the modal
@@ -80,11 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Feature 3: Dynamic Project Rendering ---
     const projects = [
         {
-            // UPDATED: ZOOMRENTALCAR DATABASE Project triggering the modal
+            // ZOOMRENTALCAR DATABASE Project triggering the modal
             title: "ZOOMRENTALCAR DATABASE",
             description: "The ZoomCarRental database stores information about customers, vehicles, bookings, and payments. It helps the system manage rentals, track available cars, record customer bookings, and display updates on the admin dashboard.",
             tech: ["SQL", "PHP", "Python"],
-            // Removed 'link' property
+            // Images array used for both card preview and modal content
             images: ["zoomcar-1.jpg", "zoomcar-2.jpg", "zoomcar-3.jpg"] 
         },
         {
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let imageHtml = '';
             // Logic to handle images for the card preview
             if (project.images && project.images.length > 0) {
-                // If multiple images exist, show them in the card preview
+                // Show multiple images in the card preview
                 const imageTags = project.images.map((imgSrc, index) => `
                     <img src="${imgSrc}" alt="${project.title} screenshot ${index + 1}" class="project-img">
                 `).join('');
@@ -130,10 +130,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // Logic to determine the action of the "View Project" link
             let projectLinkHtml = '';
             if (project.link) {
-                // For projects with an external link (default behavior)
+                // For projects with an external link
                 projectLinkHtml = `<a href="${project.link}" class="project-link" target="_blank">View Project &rarr;</a>`;
             } else if (project.images) {
                 // For projects with images that open the modal
+                // JSON.stringify is used to safely pass arrays and strings into the onclick function
                 const imagesString = JSON.stringify(project.images).replace(/"/g, "'"); 
                 const titleString = JSON.stringify(project.title);
                 const descriptionString = JSON.stringify(project.description);
@@ -145,7 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </a>
                 `;
             }
-            // End of new link logic
 
             const cardHtml = `
                 <article class="project-card">
