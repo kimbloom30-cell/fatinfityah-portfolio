@@ -145,7 +145,51 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Feature 5: Form Submission logic REMOVED ---
+    // --- Feature 5: Mailto Submission Logic ---
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Simple validation check
+            if (!name || !email || !message) {
+                formStatus.textContent = 'Please fill out all fields.';
+                formStatus.style.display = 'block';
+                return;
+            }
+
+            // Construct the email body with the collected information
+            const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
+            const body = encodeURIComponent(
+                `Name: ${name}\n` +
+                `Email: ${email}\n\n` +
+                `Message:\n${message}\n\n` +
+                `--- End of Message ---`
+            );
+
+            // Construct the mailto link
+            const mailtoLink = `mailto:fatinfityahkamarol@gmail.com?subject=${subject}&body=${body}`;
+
+            // Open the email client
+            window.location.href = mailtoLink;
+
+            // Show a status message (optional)
+            formStatus.textContent = 'Preparing email in your default mail app...';
+            formStatus.style.display = 'block';
+
+            // Optional: Clear form after a brief delay
+            setTimeout(() => {
+                contactForm.reset();
+                formStatus.textContent = 'Form data transferred. Please check your mail app.';
+            }, 1000);
+        });
+    }
     
     // --- Feature 4: Active Link Highlighting ---
     const sections = document.querySelectorAll('section');
