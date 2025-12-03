@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
             description: "The ZoomCarRental database stores information about customers, vehicles, bookings, and payments. It helps the system manage rentals, track available cars, record customer bookings, and display updates on the admin dashboard.",
             tech: ["SQL", "PHP", "Python"],
             // Images array used for both card preview and modal content
-            images: ["zoomcar-1.jpg", "zoomcar-2.jpg", "zoomcar-3.jpg"] 
+            images: ["zoomcar-1.png", "zoomcar-2.png", "zoomcar-3.png"] 
         },
         {
             title: "Sarawak Metro ART Full Prototype",
