@@ -136,7 +136,7 @@ ul {
     /* GALAXY BACKGROUND */
     background: 
         linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-        url('galaxy-background.jpg') no-repeat center center fixed; /* YOUR GALAXY IMAGE PATH */
+        url('galaxy.jpg') no-repeat center center fixed; /* YOUR GALAXY IMAGE PATH */
     background-size: cover; 
     position: relative;
 }
@@ -292,7 +292,7 @@ section {
     /* STAR BACKGROUND IMAGE */
     background: 
         linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), /* Dark overlay for text readability */
-        url('star-background.jpg') no-repeat center center fixed; /* YOUR STAR IMAGE PATH */
+        url('star.jpg') no-repeat center center fixed; /* YOUR STAR IMAGE PATH */
     background-size: cover; 
     position: relative; 
     z-index: 1; 
@@ -398,7 +398,7 @@ section {
     text-decoration: underline;
 }
 
-/* Form Styles (Re-added) */
+/* Form Styles */
 .form-group {
     margin-bottom: 20px;
 }
