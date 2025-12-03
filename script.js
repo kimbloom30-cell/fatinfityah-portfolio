@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Feature 3: Dynamic Project Rendering ---
     const projects = [
         {
-            // FINALIZED: Canva Link used. No 'images' property, so no image preview.
+            // FINALIZED: Canva Link used.
             title: "ZOOMRENTALCAR DATABASE",
             description: "The ZoomCarRental database stores information about customers, vehicles, bookings, and payments. It helps the system manage rentals, track available cars, record customer bookings, and display updates on the admin dashboard.",
             tech: ["SQL", "PHP", "Python"],
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             let imageHtml = '';
             
-            // Image preview logic (will be skipped for ZoomRental)
+            // Image preview logic
             if (project.link && project.image) { 
                 imageHtml = `<div class="project-image-container">
                     <img src="${project.image}" alt="Image for ${project.title}" class="project-img">
@@ -145,53 +145,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
-    // --- Feature 5: Form Submission (Final Formspree Logic) ---
-    const contactForm = document.getElementById('contactForm');
-    const formBtn = document.querySelector('.submit-btn');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', async function(e) {
-            e.preventDefault(); 
-            
-            const originalText = formBtn.textContent;
-            const form = e.target;
-
-            formBtn.textContent = 'Sending...';
-            formBtn.disabled = true;
-
-            try {
-                const response = await fetch(form.action, {
-                    method: form.method,
-                    body: new FormData(form),
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-                
-                if (response.ok) {
-                    formBtn.textContent = 'Message Sent! Thank you.';
-                    form.reset(); 
-                } else {
-                    formBtn.textContent = 'Error sending message.';
-                    setTimeout(() => {
-                        formBtn.textContent = originalText;
-                        formBtn.disabled = false;
-                    }, 3000);
-                    alert('Oops! There was a problem sending your message.');
-                }
-            } catch (error) {
-                formBtn.textContent = 'Network Error.';
-                setTimeout(() => {
-                    formBtn.textContent = originalText;
-                    formBtn.disabled = false;
-                }, 3000);
-                console.error('Submission error:', error);
-            }
-        });
-    }
+    // --- Feature 5: Form Submission logic REMOVED ---
     
-    // --- Feature 4: Active Link Highlighting (omitted for brevity) ---
+    // --- Feature 4: Active Link Highlighting ---
     const sections = document.querySelectorAll('section');
 
     const observerOptions = {
