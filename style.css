@@ -316,7 +316,7 @@ section {
     box-shadow: 0 10px 20px rgba(0,0,0,0.5);
 }
 
-/* --- PROJECT IMAGE STYLES (for other projects that might use a single image) --- */
+/* --- PROJECT IMAGE STYLES --- */
 .project-image-container {
     height: 180px; 
     overflow: hidden; 
@@ -330,23 +330,6 @@ section {
     height: 100%;
     object-fit: cover; 
     transition: transform 0.3s ease;
-}
-
-/* --- STYLES FOR MULTIPLE IMAGES (Card Preview) --- */
-.project-image-container.multiple-images {
-    display: flex; 
-    gap: 5px; 
-    height: 120px; 
-    padding: 5px; 
-    align-items: center; 
-}
-
-.project-image-container.multiple-images .project-img {
-    width: 33.33%; 
-    height: 100%;
-    object-fit: cover;
-    border-radius: 4px; 
-    transition: none; 
 }
 
 /* --- PROJECT TEXT & TAGS --- */
@@ -415,49 +398,7 @@ section {
     text-decoration: underline;
 }
 
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    color: var(--gold-primary);
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 12px;
-    background-color: var(--bg-color);
-    border: 1px solid #444;
-    color: var(--text-main);
-    border-radius: 4px;
-    font-family: inherit;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--gold-primary);
-}
-
-.submit-btn {
-    width: 100%;
-    padding: 12px;
-    background-color: var(--gold-primary);
-    color: #000;
-    border: none;
-    border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.submit-btn:hover {
-    background-color: var(--gold-hover);
-}
-
+/* --- FOOTER --- */
 footer {
     text-align: center;
     padding: 20px;
