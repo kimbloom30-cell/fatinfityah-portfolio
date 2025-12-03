@@ -80,10 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Feature 3: Dynamic Project Rendering ---
     const projects = [
         {
-            // This project will intentionally NOT have an imageHtml preview
             title: "ZOOMRENTALCAR DATABASE",
             description: "The ZoomCarRental database stores information about customers, vehicles, bookings, and payments. It helps the system manage rentals, track available cars, record customer bookings, and display updates on the admin dashboard.",
             tech: ["SQL", "PHP", "Python"],
+            // 💡 FIXED: Updated file extensions from .jpg to .png
             images: ["zoomcar-1.png", "zoomcar-2.png", "zoomcar-3.png"] 
         },
         {
@@ -110,11 +110,9 @@ document.addEventListener('DOMContentLoaded', () => {
             
             let imageHtml = '';
             
-            // 💡 ONLY create an image preview if the project has an external link or a single 'image' property
-            // This ensures ZOOMRENTALCAR (which has no 'link') gets a clean card.
+            // Logic to prevent image preview on the card (if no 'link' property exists)
             if (project.link) { 
                 if (project.images && project.images.length > 0) {
-                    // For projects with an external link AND an array of images (if you had any)
                     const imageTags = project.images.map((imgSrc, index) => `
                         <img src="${imgSrc}" alt="${project.title} screenshot ${index + 1}" class="project-img">
                     `).join('');
@@ -123,21 +121,18 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${imageTags}
                     </div>`;
                 } else if (project.image) {
-                    // Fallback for a single image if 'image' property exists
                     imageHtml = `<div class="project-image-container">
                         <img src="${project.image}" alt="Image for ${project.title}" class="project-img">
                     </div>`;
                 }
             }
-            // If the project has no link (like ZOOMRENTALCAR), imageHtml remains ''
 
             // Logic to determine the action of the "View Project" link
             let projectLinkHtml = '';
             if (project.link) {
-                // Standard external link
                 projectLinkHtml = `<a href="${project.link}" class="project-link" target="_blank">View Project &rarr;</a>`;
             } else if (project.images && !project.link) {
-                // Modal trigger link (only for projects with images array AND no external link)
+                // Modal trigger link
                 const imagesString = JSON.stringify(project.images).replace(/"/g, "'"); 
                 const titleString = JSON.stringify(project.title);
                 const descriptionString = JSON.stringify(project.description);
