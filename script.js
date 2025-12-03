@@ -1,37 +1,33 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- MODAL LOGIC (Accesses the HTML elements by ID/class) ---
+    // --- MODAL LOGIC (Kept for completeness if you add new modal projects later) ---
     const modal = document.getElementById('projectModal');
     const closeBtn = document.querySelector('.close-btn');
     const modalTitle = document.getElementById('modalTitle');
     const modalImageGallery = document.getElementById('modalImageGallery');
     const modalDescription = document.getElementById('modalDescription');
 
-    // Function to close the modal
     function closeModal() {
         modal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Restore background scrolling
+        document.body.style.overflow = 'auto'; 
     }
     
-    // Function to open, populate, and display the modal
     function openProjectModal(projectTitle, imagesArray, description) {
         modalTitle.textContent = projectTitle;
         modalDescription.textContent = description;
         
-        // Populate the image gallery
         modalImageGallery.innerHTML = '';
         imagesArray.forEach((imgSrc, index) => {
             const img = document.createElement('img');
-            img.src = imgSrc; // This is where the image path is set!
+            img.src = imgSrc;
             img.alt = `${projectTitle} Screenshot ${index + 1}`;
             modalImageGallery.appendChild(img);
         });
 
         modal.style.display = 'block';
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        document.body.style.overflow = 'hidden'; 
     }
 
-    // Event listeners to close the modal
     closeBtn.addEventListener('click', closeModal);
     window.addEventListener('click', (event) => {
         if (event.target === modal) {
@@ -39,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Make the function globally accessible for the onClick handler in the HTML string
     window.openProjectModal = openProjectModal; 
 
     // --- Feature 1: Mobile Navigation Toggle ---
@@ -52,7 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.classList.toggle('toggle');
     });
 
-    // Close menu when a link is clicked
     navItems.forEach(item => {
         item.addEventListener('click', () => {
             navLinks.classList.remove('active');
@@ -61,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // --- Feature 2: Dynamic Typing Effect for Hero Section ---
+    // --- Feature 2: Dynamic Typing Effect ---
     const textElement = document.querySelector('.typing-text');
     const textToType = "Develop a Website | MySQL | AR Unity";
     let charIndex = 0;
@@ -80,12 +74,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Feature 3: Dynamic Project Rendering ---
     const projects = [
         {
-            // ZoomRentalCar project: No link property, so it uses the modal. 
-            // File extensions are set to .png.
+            // FINALIZED: Canva Link used. No 'images' property, so no image preview.
             title: "ZOOMRENTALCAR DATABASE",
             description: "The ZoomCarRental database stores information about customers, vehicles, bookings, and payments. It helps the system manage rentals, track available cars, record customer bookings, and display updates on the admin dashboard.",
             tech: ["SQL", "PHP", "Python"],
-            images: ["zoomcar-1.png", "zoomcar-2.png", "zoomcar-3.png"] 
+            link: "https://www.canva.com/design/DAG6d7IL3sI/v9V6h143c8dMwE4PCEbcTg/edit?utm_content=DAG6d7IL3sI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" 
         },
         {
             title: "Sarawak Metro ART Full Prototype",
@@ -111,29 +104,20 @@ document.addEventListener('DOMContentLoaded', () => {
             
             let imageHtml = '';
             
-            // Logic to prevent image preview on the card (if no 'link' property exists)
-            if (project.link) { 
-                if (project.images && project.images.length > 0) {
-                    const imageTags = project.images.map((imgSrc, index) => `
-                        <img src="${imgSrc}" alt="${project.title} screenshot ${index + 1}" class="project-img">
-                    `).join('');
-                    
-                    imageHtml = `<div class="project-image-container multiple-images">
-                        ${imageTags}
-                    </div>`;
-                } else if (project.image) {
-                    imageHtml = `<div class="project-image-container">
-                        <img src="${project.image}" alt="Image for ${project.title}" class="project-img">
-                    </div>`;
-                }
+            // Image preview logic (will be skipped for ZoomRental)
+            if (project.link && project.image) { 
+                imageHtml = `<div class="project-image-container">
+                    <img src="${project.image}" alt="Image for ${project.title}" class="project-img">
+                </div>`;
             }
 
-            // Logic to determine the action of the "View Project" link
+            // Link logic
             let projectLinkHtml = '';
             if (project.link) {
+                // Standard external link
                 projectLinkHtml = `<a href="${project.link}" class="project-link" target="_blank">View Project &rarr;</a>`;
             } else if (project.images && !project.link) {
-                // Modal trigger link
+                // Modal trigger logic (for projects that use the popup)
                 const imagesString = JSON.stringify(project.images).replace(/"/g, "'"); 
                 const titleString = JSON.stringify(project.title);
                 const descriptionString = JSON.stringify(project.description);
@@ -162,7 +146,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- Feature 4: Active Link Highlighting (Intersection Observer) ---
+    // --- Feature 5: Form Submission (Final Formspree Logic) ---
+    const contactForm = document.getElementById('contactForm');
+    const formBtn = document.querySelector('.submit-btn');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault(); 
+            
+            const originalText = formBtn.textContent;
+            const form = e.target;
+
+            formBtn.textContent = 'Sending...';
+            formBtn.disabled = true;
+
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: new FormData(form),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    formBtn.textContent = 'Message Sent! Thank you.';
+                    form.reset(); 
+                } else {
+                    formBtn.textContent = 'Error sending message.';
+                    setTimeout(() => {
+                        formBtn.textContent = originalText;
+                        formBtn.disabled = false;
+                    }, 3000);
+                    alert('Oops! There was a problem sending your message.');
+                }
+            } catch (error) {
+                formBtn.textContent = 'Network Error.';
+                setTimeout(() => {
+                    formBtn.textContent = originalText;
+                    formBtn.disabled = false;
+                }, 3000);
+                console.error('Submission error:', error);
+            }
+        });
+    }
+    
+    // --- Feature 4: Active Link Highlighting (omitted for brevity) ---
     const sections = document.querySelectorAll('section');
 
     const observerOptions = {
@@ -188,28 +217,4 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => {
         observer.observe(section);
     });
-
-
-    // --- Feature 5: Form Submission (Front-end only) ---
-    const contactForm = document.getElementById('contactForm');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault(); 
-            
-            const name = document.getElementById('name').value;
-            const btn = document.querySelector('.submit-btn');
-            const originalText = btn.textContent;
-
-            btn.textContent = 'Sending...';
-            btn.style.opacity = '0.7';
-
-            setTimeout(() => {
-                alert(`Thank you, ${name}! Your message has been "sent" (This is a demo).`);
-                contactForm.reset();
-                btn.textContent = originalText;
-                btn.style.opacity = '1';
-            }, 1500);
-        });
-    }
 });
