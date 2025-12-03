@@ -331,7 +331,7 @@ section {
     transition: transform 0.3s ease;
 }
 
-/* --- NEW STYLES FOR MULTIPLE IMAGES (3 PICTURES) --- */
+/* --- STYLES FOR MULTIPLE IMAGES (3 PICTURES in CARD PREVIEW) --- */
 .project-image-container.multiple-images {
     display: flex; /* Enables flex container */
     gap: 5px; /* Small space between images */
@@ -471,7 +471,7 @@ footer {
     font-size: 0.9rem;
 }
 
-/* 💡 NEW: MODAL STYLES */
+/* --- MODAL STYLES --- */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
